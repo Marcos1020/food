@@ -1,0 +1,15 @@
+version: '3'
+volumes:
+  postgre_food:
+    driver: local
+services:
+  food:
+    image: postgres:10.17
+    container_name: food
+    environment:
+      - "POSTGRES_PASSWORD=food"
+      - "POSTGRES_USER=food"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgre_food:/var/lib/postgres
