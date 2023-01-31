@@ -26,6 +26,8 @@ public class CardapioEntity {
     private Long id;
     @Column(name = "NOME")
     private String nome;
+    @Column(name = "LISTA_INGREDIENTES")
+    private String listaIngredientes;
     @Column(name = "VALOR")
     private Double valor;
     @JsonDeserialize(using = DateAndTimeDeserializer.class)

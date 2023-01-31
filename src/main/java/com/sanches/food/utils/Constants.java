@@ -16,7 +16,8 @@ public class Constants {
     public final String LANCHE__DELETADO = "Lanche deletado com sucesso";
     public final String DELETANDO_INGREDIENTE = "Deletando um ingrediente";
     public final String DELETANDO_LANCHE = "Deletando um lanche do cardapio";
-    public final String CADASTRANDO_NOVO_LANCHE = "Inserindo novo lanche no cardápio";
+    public final String CADASTRANDO_NOVO_LANCHE = "Inserindo novo lanche no cardapio";
+    public final String CADASTRANDO_NOVA_PROMOCAO = "Novo pedido de lanche com promoção recebido";
     public final String ALTERANDO_DADOS_DOS_LANCHES = "Alterando os dados cadastrados de um lanche";
     public final String LANCHE_JA_CADASTRADO = "Lanche já cadastrado com o mesmo nome";
     public final String ALFACE = "alface";

@@ -14,4 +14,5 @@ public class CardapioRequest {
     private String nome;
     private ComposicaoRequest composicao;
     private Double valor;
+    private String listaIngredientes;
 }

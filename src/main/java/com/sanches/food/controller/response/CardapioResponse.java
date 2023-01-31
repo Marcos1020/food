@@ -19,6 +19,7 @@ public class CardapioResponse {
     private Long id;
     private String nome;
     private Double valor;
+    private String listaIngredientes;
     @JsonDeserialize(using = DateAndTimeDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = ConverterUtil.FORMATO_DATA)
     private Date dataRegistro;

@@ -22,6 +22,7 @@ public class CardapioConvertions {
     }
     public CardapioEntity convertRequestToEntity(CardapioRequest request, CardapioEntity lanchesEntity) {
         lanchesEntity.setNome(request.getNome());
+        lanchesEntity.setListaIngredientes(request.getListaIngredientes());
         lanchesEntity.setValor(request.getValor());
         lanchesEntity.setDataRegistro(ConverterUtil.nowTime());
         return lanchesEntity;
@@ -30,6 +31,7 @@ public class CardapioConvertions {
         CardapioResponse response = new CardapioResponse();
         response.setId(entity.getId());
         response.setNome(entity.getNome());
+        response.setListaIngredientes(entity.getListaIngredientes());
         response.setValor(entity.getValor());
         response.setDataRegistro(ConverterUtil.nowTime());
         return response;
@@ -38,6 +40,7 @@ public class CardapioConvertions {
         try {
             entity.setNome(request.getNome());
             entity.setValor(request.getValor());
+            entity.setListaIngredientes(request.getListaIngredientes());
             entity.setDataAlteracao(ConverterUtil.nowTime());
         }catch (PreconditionFailedException exception){
             log.error(Constants.CAMPO_OBRIGATORIO);
@@ -48,6 +51,7 @@ public class CardapioConvertions {
         UpdateCardapioResponse response = new UpdateCardapioResponse();
         response.setIdLanche(entitySave.getId());
         response.setNomeDoLanche(entitySave.getNome());
+        response.setListaIngredientes(entitySave.getListaIngredientes());
         response.setValor(entitySave.getValor());
         response.setDataAlteracao(ConverterUtil.nowTime());
         return response;

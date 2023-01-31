@@ -31,8 +31,8 @@ public class CardapioService {
         this.convertions = convertions;
         this.ingredienteRepository = ingredienteRepository;
     }
-    public CardapioResponse cadastrarNovoItemNoCardapio(final CardapioRequest request, final String promocao)throws ObjectAlreadyExists {
-        log.info(Constants.CADASTRANDO_NOVO_LANCHE);
+    public CardapioResponse cadastrarNovoItemNoCardapio(final CardapioRequest request, final String promocao){
+        log.info(Constants.CADASTRANDO_NOVA_PROMOCAO);
         if (!promocao.isEmpty()) {
             if (request.getComposicao().getSalada().equals(Constants.ALFACE) && request.getComposicao().getBaccon().equals(false)) {
                 Double percentual =  10 / 100.0;
@@ -52,11 +52,6 @@ public class CardapioService {
                 convertions.adicionaPromocaoQUeijo(request, 0.0);
             }
         }
-            CardapioEntity entity = this.repository.findByNome(request.getNome());
-            if (Objects.nonNull(entity)) {
-                log.error(Constants.LANCHE_JA_CADASTRADO);
-                throw new ObjectAlreadyExists(Constants.LANCHE_JA_CADASTRADO);
-            }
             CardapioEntity lanchesEntity = new CardapioEntity();
             convertions.convertRequestToEntity(request, lanchesEntity);
             CardapioEntity entitySave = this.repository.save(lanchesEntity);
@@ -64,6 +59,21 @@ public class CardapioService {
             CardapioResponse response = convertions.convertEntityToResponse(entitySave);
             return response;
         }
+    public CardapioResponse CadastraUmLancheFixoNoCardapio(final CardapioRequest request)throws ObjectAlreadyExists{
+        log.info(Constants.CADASTRANDO_NOVO_LANCHE);
+
+        CardapioEntity entity = this.repository.findByNome(request.getNome());
+        if (Objects.nonNull(entity)) {
+            log.error(Constants.LANCHE_JA_CADASTRADO);
+            throw new ObjectAlreadyExists(Constants.LANCHE_JA_CADASTRADO);
+        }
+        CardapioEntity lanchesEntity = new CardapioEntity();
+        convertions.convertRequestToEntity(request, lanchesEntity);
+        CardapioEntity entitySave = this.repository.save(lanchesEntity);
+
+        CardapioResponse response = convertions.convertEntityToResponse(entitySave);
+        return response;
+    }
 
     public List<CardapioEntity> buscaPorTodosItensDoCardapio(){
         return this.repository.findAll();

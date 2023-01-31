@@ -17,7 +17,7 @@ import java.util.Date;
 @Builder
 public class UpdateCardapioResponse {
     private Long idLanche;
-    private String composicaoDoLanche;
+    private String listaIngredientes;
     private String nomeDoLanche;
     private Double valor;
     @JsonDeserialize(using = DateAndTimeDeserializer.class)

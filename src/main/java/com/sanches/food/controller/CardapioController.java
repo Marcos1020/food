@@ -26,8 +26,14 @@ public class CardapioController {
     @PostMapping
     public ResponseEntity<CardapioResponse>cadastrandoNovoLancheNoCardapio(
             @RequestBody CardapioRequest request,
-            @RequestParam(value = "promocao", required = false)final String promocao) throws ObjectAlreadyExists{
+            @RequestParam(value = "promocao", required = true)final String promocao){
         CardapioResponse response = this.service.cadastrarNovoItemNoCardapio(request, promocao);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+    @PostMapping("/cadastrando/item-fixo")
+    public ResponseEntity<CardapioResponse>cadastrandoNovoLancheFixoNocardapio(
+            @RequestBody CardapioRequest request)throws ObjectAlreadyExists{
+        CardapioResponse response = this.service.CadastraUmLancheFixoNoCardapio(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
     @GetMapping("/all")
